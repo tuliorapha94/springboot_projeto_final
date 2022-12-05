@@ -1,15 +1,19 @@
 package com.projeto_final.obras.model;
 
-import java.math.BigInteger;
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
-
+@Entity
 public class Inspecao {
-    private BigInteger id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @ManyToOne
     private ObraInspecao obraInspecao;
     private Date data;
     private String observacoes;
 
-    public void setId(BigInteger id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -25,7 +29,7 @@ public class Inspecao {
         this.observacoes = observacoes;
     }
 
-    public BigInteger getId() {
+    public Long getId() {
         return id;
     }
 

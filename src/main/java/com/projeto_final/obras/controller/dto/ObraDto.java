@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ObraDto {
-    private BigInteger id;
+    private Long id;
     private String nome;
     private BigInteger anoConstrucao;
 
@@ -21,7 +21,7 @@ public class ObraDto {
         return obras.stream().map(ObraDto::new).collect(Collectors.toList());
     }
 
-    public BigInteger getId() {
+    public Long getId() {
         return id;
     }
 
