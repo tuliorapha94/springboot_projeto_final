@@ -1,16 +1,21 @@
 package com.projeto_final.obras.model;
 
-import java.math.BigInteger;
+import javax.persistence.*;
 
+@Entity
 public class ObraInspecao {
-    private BigInteger id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @ManyToOne
     private Obra obra;
-    private String frequencia;
+    @Enumerated(EnumType.STRING)
+    private InspecaoFrequencia frequencia;
     private int mes;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private InspecaoStatus status = InspecaoStatus.PENDENTE;
     private int prioridade;
 
-    public void setId(BigInteger id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -18,23 +23,15 @@ public class ObraInspecao {
         this.obra = obra;
     }
 
-    public void setFrequencia(String frequencia) {
-        this.frequencia = frequencia;
-    }
-
     public void setMes(int mes) {
         this.mes = mes;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public void setPrioridade(int prioridade) {
         this.prioridade = prioridade;
     }
 
-    public BigInteger getId() {
+    public Long getId() {
         return id;
     }
 
@@ -42,16 +39,24 @@ public class ObraInspecao {
         return obra;
     }
 
-    public String getFrequencia() {
+    public InspecaoFrequencia getFrequencia() {
         return frequencia;
+    }
+
+    public void setFrequencia(InspecaoFrequencia frequencia) {
+        this.frequencia = frequencia;
+    }
+
+    public InspecaoStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(InspecaoStatus status) {
+        this.status = status;
     }
 
     public int getMes() {
         return mes;
-    }
-
-    public String getStatus() {
-        return status;
     }
 
     public int getPrioridade() {

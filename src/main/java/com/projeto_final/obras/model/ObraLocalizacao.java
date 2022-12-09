@@ -1,10 +1,13 @@
 package com.projeto_final.obras.model;
 
-import java.math.BigInteger;
+import javax.persistence.*;
 
+@Entity
 public class ObraLocalizacao {
-    private BigInteger id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String cidade;
+    @OneToOne
     private Obra obra;
     private String estado;
     private String latitude;
@@ -38,11 +41,11 @@ public class ObraLocalizacao {
         this.longitude = longitude;
     }
 
-    public BigInteger getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

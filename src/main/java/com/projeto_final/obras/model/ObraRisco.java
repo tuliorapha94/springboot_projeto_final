@@ -1,4 +1,4 @@
-package com.projeto_final.obras.model.enums;
+package com.projeto_final.obras.model;
 
 public enum ObraRisco {
     BAIXO,

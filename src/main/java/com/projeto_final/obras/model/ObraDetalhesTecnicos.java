@@ -1,18 +1,23 @@
 package com.projeto_final.obras.model;
 
-import java.math.BigInteger;
+import javax.persistence.*;
 
+@Entity
 public class ObraDetalhesTecnicos {
-    private BigInteger id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @ManyToOne
     private Obra obra;
-    private String tipo;
-    private String risco;
+    @Enumerated(EnumType.STRING)
+    private ObraTipo tipo;
+    @Enumerated(EnumType.STRING)
+    private ObraRisco risco;
 
-    public void setTipo(String tipo) {
+    public void setTipo(ObraTipo tipo) {
         this.tipo = tipo;
     }
 
-    public void setRisco(String risco) {
+    public void setRisco(ObraRisco risco) {
         this.risco = risco;
     }
 
@@ -20,11 +25,11 @@ public class ObraDetalhesTecnicos {
         this.obra = obra;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public BigInteger getId() {
+    public Long getId() {
         return id;
     }
 
@@ -32,11 +37,11 @@ public class ObraDetalhesTecnicos {
         return obra;
     }
 
-    public String getTipo() {
+    public ObraTipo getTipo() {
         return tipo;
     }
 
-    public String getRisco() {
+    public ObraRisco getRisco() {
         return risco;
     }
 }
